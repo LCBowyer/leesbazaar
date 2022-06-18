@@ -13,10 +13,6 @@ var portfolio = {
 				"label": "Two Birds",
 				"type": "PROJECT",
 				"id": "twobirds"
-			}, {
-				"label": "The Two of Us",
-				"type": "PROJECT",
-				"id": "ttou"
 			}]
 		}, {
 			"label": "Bleach",
@@ -95,25 +91,25 @@ var portfolio = {
 			"subtitle": "Lorem Ipsum",
 			"description_short": "Lorem Ipsum",
 			"description_long": "Lorem Ipsum",
-			"cover_image": {"s": "/libraries/images/paul.jpg", "m": "/libraries/images/paul.jpg", "l": "/libraries/images/paul.jpg", "xl": "/libraries/images/paul.jpg"},
+			"cover_image": {"s": "/images/paul.jpg", "m": "/images/paul.jpg", "l": "/images/paul.jpg", "xl": "/images/paul.jpg"},
 			"gallery" : [{
 				"title": "Paul McCartney 2",
 				"subtitle": "Lorem Ipsum",
 				"description_short": "Lorem Ipsum",
 				"description_long": "Lorem Ipsum",
-				"image": {"s": "/libraries/images/paul.jpg", "m": "/libraries/images/paul.jpg", "l": "/libraries/images/paul.jpg", "xl": "/libraries/images/paul.jpg"},
+				"image": {"s": "/images/paul.jpg", "m": "/images/paul.jpg", "l": "/images/paul.jpg", "xl": "/images/paul.jpg"},
 			},{
 				"title": "Paul McCartney 3",
 				"subtitle": "Lorem Ipsum",
 				"description_short": "Lorem Ipsum",
 				"description_long": "Lorem Ipsum",
-				"image": {"s": "/libraries/images/paul.jpg", "m": "/libraries/images/paul.jpg", "l": "/libraries/images/paul.jpg", "xl": "/libraries/images/paul.jpg"},
+				"image": {"s": "/images/paul.jpg", "m": "/images/paul.jpg", "l": "/images/paul.jpg", "xl": "/images/paul.jpg"},
 			},{
 				"title": "Paul McCartney 4",
 				"subtitle": "Lorem Ipsum",
 				"description_short": "Lorem Ipsum",
 				"description_long": "Lorem Ipsum",
-				"image": {"s": "/libraries/images/paul.jpg", "m": "/libraries/images/paul.jpg", "l": "/libraries/images/paul.jpg", "xl": "/libraries/images/paul.jpg"},
+				"image": {"s": "/images/paul.jpg", "m": "/images/paul.jpg", "l": "/images/paul.jpg", "xl": "/images/paul.jpg"},
 			}]
 		},
 		"twobirds": {
@@ -121,25 +117,25 @@ var portfolio = {
 			"subtitle": "Lorem Ipsum",
 			"description_short": "Lorem Ipsum",
 			"description_long": "Lorem Ipsum",
-			"cover_image": {"s": "/libraries/images/paul.jpg", "m": "/libraries/images/paul.jpg", "l": "/libraries/images/paul.jpg", "xl": "/libraries/images/paul.jpg"},
+			"cover_image": {"s": "/images/paul.jpg", "m": "/images/paul.jpg", "l": "/images/paul.jpg", "xl": "/images/paul.jpg"},
 			"gallery" : [{
 				"title": "Two Birds 2",
 				"subtitle": "Lorem Ipsum",
 				"description_short": "Lorem Ipsum",
 				"description_long": "Lorem Ipsum",
-				"image": {"s": "/libraries/images/paul.jpg", "m": "/libraries/images/paul.jpg", "l": "/libraries/images/paul.jpg", "xl": "/libraries/images/paul.jpg"},
+				"image": {"s": "/images/paul.jpg", "m": "/images/paul.jpg", "l": "/images/paul.jpg", "xl": "/images/paul.jpg"},
 			},{
 				"title": "Two Birds 3",
 				"subtitle": "Lorem Ipsum",
 				"description_short": "Lorem Ipsum",
 				"description_long": "Lorem Ipsum",
-				"image": {"s": "/libraries/images/paul.jpg", "m": "/libraries/images/paul.jpg", "l": "/libraries/images/paul.jpg", "xl": "/libraries/images/paul.jpg"},
+				"image": {"s": "/images/paul.jpg", "m": "/images/paul.jpg", "l": "/images/paul.jpg", "xl": "/images/paul.jpg"},
 			},{
 				"title": "Two Birds 4",
 				"subtitle": "Lorem Ipsum",
 				"description_short": "Lorem Ipsum",
 				"description_long": "Lorem Ipsum",
-				"image": {"s": "/libraries/images/paul.jpg", "m": "/libraries/images/paul.jpg", "l": "/libraries/images/paul.jpg", "xl": "/libraries/images/paul.jpg"},
+				"image": {"s": "/images/paul.jpg", "m": "/images/paul.jpg", "l": "/images/paul.jpg", "xl": "/images/paul.jpg"},
 			}]
 		}
 	},
@@ -149,7 +145,7 @@ var portfolio = {
 			"subtitle": "Lorem Ipsum",
 			"description_short": "Lorem Ipsum",
 			"description_long": "Lorem Ipsum",
-			"cover_image": {"s": "/libraries/images/paul.jpg", "m": "/libraries/images/paul.jpg", "l": "/libraries/images/paul.jpg", "xl": "/libraries/images/paul.jpg"},
+			"cover_image": {"s": "/images/paul.jpg", "m": "/images/paul.jpg", "l": "/images/paul.jpg", "xl": "/images/paul.jpg"},
 			"template": "page_contact_me"
 		},
 		"about_me": {
@@ -157,7 +153,7 @@ var portfolio = {
 			"subtitle": "Lorem Ipsum",
 			"description_short": "Lorem Ipsum",
 			"description_long": "Lorem Ipsum",
-			"cover_image": {"s": "/libraries/images/paul.jpg", "m": "/libraries/images/paul.jpg", "l": "/libraries/images/paul.jpg", "xl": "/libraries/images/paul.jpg"},
+			"cover_image": {"s": "/images/paul.jpg", "m": "/images/paul.jpg", "l": "/images/paul.jpg", "xl": "/images/paul.jpg"},
 			"template": "page_contact_me"
 		},
 		"cv": {
@@ -165,7 +161,7 @@ var portfolio = {
 			"subtitle": "Lorem Ipsum",
 			"description_short": "Lorem Ipsum",
 			"description_long": "Lorem Ipsum",
-			"cover_image": {"s": "/libraries/images/paul.jpg", "m": "/libraries/images/paul.jpg", "l": "/libraries/images/paul.jpg", "xl": "/libraries/images/paul.jpg"},
+			"cover_image": {"s": "/images/paul.jpg", "m": "/images/paul.jpg", "l": "/images/paul.jpg", "xl": "/images/paul.jpg"},
 			"template": "page_contact_me"
 		}
 	}

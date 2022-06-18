@@ -33,7 +33,9 @@
 
 			<nav id="site_nav"></nav>
 
-			<script src="http://zaarlabs.com/libraries/zaar/zaar.0.0.1.js"></script>
+			<div id="gallery"></div>
+
+			<script src="http://zaarlabs.local/libraries/zaar/zaar.0.0.1.js"></script>
 			<script src="/data/portfolio.0.0.2.js"></script>
 
 			<script type="text/template" id="template_site_nav">
@@ -46,73 +48,145 @@
 				</li>
 			</script>
 
+			<script type="text/template" id="gallery_thumb">
+				<li>
+					<img src="%image%" />
+					<label>%label%</label>
+					<p>%description_short%</p>
+					<button type="button">Zoom</button>
+				</li>
+			</script>
+
 			<script>
-				function drillTree(nav){
-					/* APPLICATION SPECIFIC */
-					var htmlOutput = "",
-						labelList = [];
+				console.log(ZAAR("#gallery_thumb").html());
 
-					for(var i = 0, len = nav.length; i < len; i++){
-						var navItem = nav[i],
-							subnav = "",
-							action = {
-								"type": navItem.type,
-								"id": navItem.id
-							},
-							subNavLength = 0;
+				function displayFolder(id, projects){
+					var htmlOutput = "";
 
-						if(navItem.nav){
-							// There is a Sub Navigation
-							drilledTree = drillTree(navItem.nav);
-							subnav = drilledTree.htmlOutput;
-							action = drilledTree.labelList;
-							subNavLength = navItem.nav.length;
-						}
+					for(var i = 0, projectsLength = projects.length; i < projectsLength; i++){
+						var project = projects[i],
+							coverItem = portfolio.PROJECTS[project.id];
 
-						labelList.push({
-							"type": navItem.type, "id": navItem.id
-						});
-
-						htmlOutput += ZAAR.template.get("template_site_nav", [{
+						htmlOutput += ZAAR.template.get("gallery_thumb", [{
+																				key: "image",
+																				value: coverItem.cover_image.m
+																			},{
 																				key: "label",
-																				value: navItem.label
+																				value: coverItem.title
 																			},{
-																				key: "child-count",
-																				value: subNavLength
-																			},{
-																				key: "nav",
-																				value: subnav
-																			},{
-																				key: "action",
-																				value: JSON.stringify(action)
+																				key: "description_short",
+																				value: coverItem.description_short
 																			}]);
 					}
 
-					return {
-						htmlOutput: htmlOutput,
-						labelList: {"type": "FOLDER", "content": labelList}
-					}
+					ZAAR("#gallery").html(htmlOutput);
 				}
+
+				function displayProject(id){
+					var project = portfolio.PROJECTS[id],
+						gallery = project.gallery,
+						htmlOutput = "";
+
+					for(var i = 0, galleryLength = gallery.length; i < galleryLength; i++){
+						var galleryItem = gallery[i];
+
+						htmlOutput += ZAAR.template.get("gallery_thumb", [{
+																				key: "image",
+																				value: galleryItem.image.m
+																			},{
+																				key: "label",
+																				value: galleryItem.title
+																			},{
+																				key: "description_short",
+																				value: galleryItem.description_short
+																			}]);
+					}
+
+					ZAAR("#gallery").html(htmlOutput);
+				}
+
+
+				function buildTree (tree){
+					var drill = function(nav) {
+						var htmlOutput = "",
+							labelList = [];
+
+						for(var i = 0, len = nav.length; i < len; i++){
+							var navItem = nav[i],
+								subnav = "",
+								action = {
+									"type": navItem.type,
+									"id": navItem.id
+								},
+								subNavLength = 0;
+
+							if(navItem.nav){
+								// There is a Sub Navigation
+								drilledTree = drill(navItem.nav);
+								subnav = drilledTree.htmlOutput;
+								action = drilledTree.labelList;
+								subNavLength = navItem.nav.length;
+							}
+
+							labelList.push({
+								"type": navItem.type, "id": navItem.id
+							});
+
+							htmlOutput += ZAAR.template.get("template_site_nav", [{
+																					key: "label",
+																					value: navItem.label
+																				},{
+																					key: "child-count",
+																					value: subNavLength
+																				},{
+																					key: "nav",
+																					value: subnav
+																				},{
+																					key: "action",
+																					value: JSON.stringify(action)
+																				}]);
+						}
+
+						return {
+							htmlOutput: htmlOutput,
+							labelList: {"type": "FOLDER", "content": labelList}
+						}
+					}
+
+					return drill(tree).htmlOutput;
+				}
+
+				ZAAR("#site_nav").html(buildTree(portfolio.nav));
 
 				
 
-					ZAAR("#site_nav label").onClick("test", function(args){
-						var action = JSON.parse(args.dataset.action);
+				
 
-						console.log(action.type)
-						console.log(action.id)
-						console.log(action.content)
-					});
+				ZAAR("#site_nav label").onClick("test", function(args){
+					var action = JSON.parse(args.dataset.action);
 
-					ZAAR("#site_nav button").onClick("toggle", function(args){
-						var parentNode = args.target.parentNode;
+					console.log(action.type)
+					console.log(action.id)
+					console.log(action.content)
 
-						ZAAR(parentNode).toggleClass("hideSubMenu");
-					});
+					if(action.type == "PROJECT"){
+						displayProject(action.id)
+					} else if(action.type == "FOLDER"){
+						displayFolder(action.id, action.content);
+					}
+				});
 
-					var tree = drillTree(portfolio.nav).htmlOutput;
+				ZAAR("#site_nav button").onClick("toggle", function(args){
+					var parentNode = args.target.parentNode;
 
-					document.getElementById("site_nav").innerHTML = tree;
+					ZAAR(parentNode).toggleClass("hideSubMenu");
+				});
+
+				ZAAR("#gallery button").onClick("zoomImage", function(args){
+					console.log("ZOOM IMAGE");
+				});
+
+					
 
 		</script>
 	</body>

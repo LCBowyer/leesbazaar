@@ -4,3 +4,4 @@ deployment:
     - export DEPLOYPATH=/home/oa0k98zxdd10/public_html/leesbazaar.com/
     - /bin/cp index.html $DEPLOYPATH
     - /bin/cp -R data $DEPLOYPATH
+    - /bin/cp -R images $DEPLOYPATH
