@@ -1,9 +1,132 @@
 <html>
 	<head>
+			
+		
 
 	</head>
 
 	<body>
-		Test
+
+			<style>
+				ul, li{
+					
+				}
+
+				li {
+					list-style: none;
+				}
+				.red {
+					background: red;
+				}
+
+				.hideSubMenu > ul {
+					display: none;
+				}
+
+				li[data-CHILD-COUNT="0"] > ul,
+				li[data-CHILD-COUNT="0"] > .toggleSubMenu {
+					display: none;
+				}
+			</style>
+			
+			
+
+			<nav id="site_nav"></nav>
+
+			<script src="http://zaarlabs.com/libraries/zaar/zaar.0.0.1.js"></script>
+			<script src="/data/portfolio.0.0.2.js"></script>
+
+			<script type="text/template" id="template_site_nav">
+				<li data-CHILD-COUNT="%child-count%">
+					<label data-ACTION='%action%'>%label%</label>
+					<button type="button" class="toggleSubMenu">Toggle</button>
+					<ul>
+						%nav%
+					</ul>
+				</li>
+			</script>
+
+			<script>
+				function drillTree(nav){
+					/* APPLICATION SPECIFIC */
+					var htmlOutput = "",
+						labelList = [];
+
+					for(var i = 0, len = nav.length; i < len; i++){
+						var navItem = nav[i],
+							subnav = "",
+							action = {
+								"type": navItem.type,
+								"id": navItem.id
+							},
+							subNavLength = 0;
+
+						if(navItem.nav){
+							// There is a Sub Navigation
+							drilledTree = drillTree(navItem.nav);
+							subnav = drilledTree.htmlOutput;
+							action = drilledTree.labelList;
+							subNavLength = navItem.nav.length;
+						}
+
+						labelList.push({
+							"type": navItem.type, "id": navItem.id
+						});
+
+						htmlOutput += ZAAR.template.get("template_site_nav", [{
+																				key: "label",
+																				value: navItem.label
+																			},{
+																				key: "child-count",
+																				value: subNavLength
+																			},{
+																				key: "nav",
+																				value: subnav
+																			},{
+																				key: "action",
+																				value: JSON.stringify(action)
+																			}]);
+					}
+
+					return {
+						htmlOutput: htmlOutput,
+						labelList: {"type": "FOLDER", "content": labelList}
+					}
+				}
+
+				
+
+					ZAAR("#site_nav label").onClick("test", function(args){
+						var action = JSON.parse(args.dataset.action);
+
+						console.log(action.type)
+						console.log(action.id)
+						console.log(action.content)
+					});
+
+					ZAAR("#site_nav button").onClick("toggle", function(args){
+						var parentNode = args.target.parentNode;
+
+						ZAAR(parentNode).toggleClass("hideSubMenu");
+					});
+
+					var tree = drillTree(portfolio.nav).htmlOutput;
+
+					document.getElementById("site_nav").innerHTML = tree;
+
+		</script>
 	</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
